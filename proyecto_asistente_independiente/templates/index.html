@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asistente Inteligente de Recursos Educativos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Fundamentos de IA</p>
+          <h1>Asistente Inteligente para Búsqueda y Recomendación</h1>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <section class="panel form-panel">
+          <h2>Perfil del estudiante</h2>
+          <form id="perfil-form">
+            <div class="grid-2">
+              <label>
+                Nombre
+                <input type="text" id="nombre" value="Ana" />
+              </label>
+              <label>
+                Tema
+                <select id="tema">
+                  <option value="Inteligencia Artificial" selected>Inteligencia Artificial</option>
+                  <option value="Programación">Programación</option>
+                  <option value="Ciencia de Datos">Ciencia de Datos</option>
+                  <option value="Desarrollo Web">Desarrollo Web</option>
+                </select>
+              </label>
+              <label>
+                Nivel
+                <select id="nivel">
+                  <option value="Básico">Básico</option>
+                  <option value="Intermedio" selected>Intermedio</option>
+                  <option value="Avanzado">Avanzado</option>
+                </select>
+              </label>
+              <label>
+                Horas disponibles / semana
+                <input type="number" id="horas" value="6" min="1" max="40" />
+              </label>
+              <label>
+                Modalidad favorita
+                <select id="modalidad">
+                  <option value="Práctica" selected>Práctica</option>
+                  <option value="Proyecto">Proyecto</option>
+                  <option value="Lectura">Lectura</option>
+                  <option value="Video">Video</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              Objetivo de aprendizaje
+              <textarea id="objetivo" rows="4">Quiero aprender a programar con Python y desarrollar sistemas inteligentes con IA.</textarea>
+            </label>
+            <div class="actions">
+              <button type="submit" class="primary">Generar recomendación</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2>Búsqueda individual</h2>
+          <div class="search-controls">
+            <label>
+              Algoritmo
+              <select id="algoritmo">
+                <option value="Lineal">Lineal</option>
+                <option value="Binaria">Binaria</option>
+                <option value="DFS">DFS</option>
+                <option value="BFS">BFS</option>
+                <option value="Heuristica">Heurística</option>
+              </select>
+            </label>
+            <label class="grow">
+              Consulta
+              <input type="text" id="consulta" value="búsqueda en IA" />
+            </label>
+            <button id="buscar-btn" class="primary">Ejecutar búsqueda</button>
+          </div>
+          <div id="search-status" class="status muted" aria-live="polite">Listo para ejecutar.</div>
+          <div id="search-trace" class="trace-box" aria-live="polite"></div>
+        </section>
+
+        <section class="panel">
+          <h2>Comparador de algoritmos</h2>
+          <button id="comparar-btn" class="primary">Comparar 5 algoritmos</button>
+          <div class="table-wrap">
+            <table id="comparacion-table">
+              <thead>
+                <tr>
+                  <th>Algoritmo</th>
+                  <th>Tiempo (ms)</th>
+                  <th>Pasos</th>
+                  <th>Revisados</th>
+                  <th>Coincidencias</th>
+                  <th>Complejidad</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Reglas SI-ENTONCES activadas</h2>
+          <div id="rules-panel" class="badges"></div>
+        </section>
+
+        <section class="panel">
+          <h2>Recursos recomendados</h2>
+          <div id="resource-cards" class="resource-grid"></div>
+        </section>
+
+        <section class="panel">
+          <h2>Plan de estudio pedagógico</h2>
+          <div id="plan-panel" class="plan-box" aria-live="polite"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
+</html>
